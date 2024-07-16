@@ -14,8 +14,8 @@ int main() {
             cout << endl; 
         }
         else{
-            for(int k = b; k >= a; k--){
-                cout << k << " * " <<  i << " = " << k*i << " ";
+            for(int k = a; k >= b; k--){
+                cout << k << " * " <<  i << " = " << k*i << "  ";
             }
             cout << endl; 
         }
