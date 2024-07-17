@@ -4,43 +4,55 @@ using namespace std;
 
 vector<int> v;
 vector<vector<int>> grid;
+int n, m;
 
-
-int happy(int location, int num){
-    int vertical = 0;
-    int horizon = 0;
-    for(int i = 1; i<n; i++){
-        if(v[i - 1][location] == v[i][location]){
+int happy(int location) {
+    int vertical = 1;
+    int horizon = 1;
+    int result = 0;
+    for (int i = 1; i < n; i++) {
+        if (grid[i - 1][location] == grid[i][location]) {
             vertical++;
         }
-        else{
-            vertical = 0;
+        else vertical = 1;
+        if (vertical >= m) {
+            result++;
+            break;
         }
-        if(v[location][i-1] == v[location][i]){
-            horizon++;
-        }
-        else horizon = 0;
     }
 
-    return vertical + horizon;
+    for (int i = 1; i < n; i++) {
+        if (grid[location][i - 1] == grid[location][i]) {
+            horizon++;
+        }
+        else horizon = 1;
+        if (horizon >= m) {
+            result++;
+            break;
+        }
+    }
+
+    return result;
 }
 
 int main() {
-    int n , m;
+    
     cin >> n >> m;
 
     v.resize(n, 0);
     grid.resize(n, v);
 
-    for(int i = 0; i<n; i++){
-        for(int k = 0; k<n; k++){
-            cin >> grid[i][j];
+    for (int i = 0; i < n; i++) {
+        for (int k = 0; k < n; k++) {
+            cin >> grid[i][k];
         }
     }
-    
-    for(int i = 0; i<n; i++){
 
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        result += happy(i);
     }
 
+    cout << result;
     return 0;
 }
