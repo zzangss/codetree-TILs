@@ -39,6 +39,17 @@ int main() {
     
     cin >> n >> m;
 
+    if (n == 1) {
+        if (m == 1) {
+            cout << 1;
+            return 0;
+        }
+        else {
+            cout << 0;
+            return 0;
+        }
+    }
+
     v.resize(n, 0);
     grid.resize(n, v);
 
